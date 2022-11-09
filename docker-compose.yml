@@ -1,14 +1,21 @@
-version: '3'
+version: '3.9'
 
 
 services:
   postgres:
     container_name: polylink-postgres
     image: postgres
+    networks:
+        - polylink-network
     environment:
         POSTGRES_USER: root
         POSTGRES_PASSWORD: password
-        POSTGRES_DB: PolyLink
+        POSTGRES_DB: postgres
     ports:
-      - 5431:5431
+      - 5000:5432
+
+networks:
+  polylink-network:
+    name: polylink-network
+    external: true
 
