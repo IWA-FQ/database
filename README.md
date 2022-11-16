@@ -1,11 +1,7 @@
-# Database
-
----
-Setup a container postgres database
+# Database (PostgreSQL)
+### This repository contains the scripts needed to setup the database container configuration (with Docker)
 
 ## Setup in development environment
-
----
 
 ### If it's the first time you run the project you need to setup a docker network
 ```bash
