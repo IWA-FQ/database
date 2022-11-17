@@ -1,4 +1,14 @@
-CREATE TABLE "users_polylink" (
+CREATE TABLE "employer" (
+  "id" varchar PRIMARY KEY,
+  "firstname" varchar,
+  "lastname" varchar,
+  "email" varchar UNIQUE,
+  "head_office_city" varchar,
+  "head_office_city_code" int,
+  "work_field" varchar
+);
+
+CREATE TABLE "jobseeker" (
   "id" varchar PRIMARY KEY,
   "firstname" varchar,
   "lastname" varchar,
@@ -9,7 +19,7 @@ CREATE TABLE "users_polylink" (
   "cv_link" varchar
 );
 
-CREATE TABLE "employement" (
+CREATE TABLE "recruiting" (
   "offer" int,
   "employee" varchar,
   "employee_rate" int,
@@ -19,9 +29,9 @@ CREATE TABLE "employement" (
 
 CREATE TABLE "apply" (
   "offer" int,
-  "employee" varchar,
+  "applicant" varchar,
   "date" date,
-  PRIMARY KEY ("offer", "employee")
+  PRIMARY KEY ("offer", "applicant")
 );
 
 CREATE TABLE "offer" (
@@ -38,12 +48,12 @@ CREATE TABLE "offer" (
   "employer" varchar
 );
 
-ALTER TABLE "offer" ADD FOREIGN KEY ("employer") REFERENCES "users_polylink" ("id");
+ALTER TABLE "apply" ADD FOREIGN KEY ("applicant") REFERENCES "jobseeker" ("id");
 
 ALTER TABLE "apply" ADD FOREIGN KEY ("offer") REFERENCES "offer" ("id");
 
-ALTER TABLE "apply" ADD FOREIGN KEY ("employee") REFERENCES "users_polylink" ("id");
+ALTER TABLE "offer" ADD FOREIGN KEY ("employer") REFERENCES "employer" ("id");
 
-ALTER TABLE "employement" ADD FOREIGN KEY ("offer") REFERENCES "offer" ("id");
+ALTER TABLE "recruiting" ADD FOREIGN KEY ("offer") REFERENCES "offer" ("id");
 
-ALTER TABLE "employement" ADD FOREIGN KEY ("employee") REFERENCES "users_polylink" ("id");
+ALTER TABLE "recruiting" ADD FOREIGN KEY ("employee") REFERENCES "jobseeker" ("id");
