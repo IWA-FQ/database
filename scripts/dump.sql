@@ -15,6 +15,7 @@ CREATE TABLE "recruiting" (
   "id_employee" int,
   "employee_rate" int,
   "employer_rate" int,
+  "last_updated" timestamp,
   PRIMARY KEY ("id_offer", "id_employee")
 );
 
@@ -30,7 +31,7 @@ CREATE TABLE "offer" (
   "id_employer" int,
   "title" varchar,
   "description" varchar,
-  "keywords" json,
+  "keywords" varchar,
   "start_date" date,
   "end_date" date,
   "city" varchar,
