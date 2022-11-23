@@ -52,9 +52,10 @@ CREATE TABLE "offer" (
                          "advantage" varchar
 );
 
-CREATE TABLE "recommandation" (
+CREATE TABLE "recommendation" (
                                   "id_offer" int,
                                   "id_jobseeker" int,
+				  "score" int,
                                   "last_updated" timestamp
 );
 
